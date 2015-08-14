@@ -28,7 +28,19 @@ foreach ($input_pdfs as $_pdf)
 	ob_start();
 	$cmd = array();
 	$cmd[] = "mkdir output/".$conversion_hash."";
+	$cmd[] = "mkdir text_output/".$conversion_hash."";
+
+	// TO HTML AND IMAGE PARSER [pdftohtml]
 	$cmd[] = "/usr/bin/pdftohtml input/".$source." ./output/".$conversion_hash."/";
+	
+	// TO TEXT PARSER [pdftotext]
+	$cmd[] = "/usr/bin/pdftotext input/".$source." >> ".$conversion_hash.".txt";
+	$cmd[] = "mv ./output/".$conversion_hash."/*.html ./";
+	$cmd[] = "mv ./output/".$conversion_hash."/*.txt ./";
+
+	$cmd[] = "mv ./text_output/".$conversion_hash."/*.html ./";
+	$cmd[] = "mv ./text_output/".$conversion_hash."/*.txt ./";
+
 	foreach ($cmd as $_exec)
 	{
 		passthru($_exec);
