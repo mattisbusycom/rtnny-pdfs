@@ -1,0 +1,12 @@
+{
+    "name": "root/rbny-pdfs",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "you@example.com"
+        }
+    ],
+    "require": {
+        "league/flysystem": "^1.0"
+    }
+}
